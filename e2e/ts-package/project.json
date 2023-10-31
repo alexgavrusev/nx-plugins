@@ -1,0 +1,23 @@
+{
+  "name": "e2e-ts-package",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "e2e/ts-package/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "runInBand": true
+      },
+      "dependsOn": ["^build"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["e2e/ts-package/**/*.ts"]
+      }
+    }
+  },
+  "implicitDependencies": ["ts-package"]
+}

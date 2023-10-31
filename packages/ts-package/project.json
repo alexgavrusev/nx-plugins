@@ -1,0 +1,61 @@
+{
+  "name": "ts-package",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/ts-package/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/ts-package",
+        "main": "packages/ts-package/src/index.ts",
+        "tsConfig": "packages/ts-package/tsconfig.lib.json",
+        "assets": [
+          "packages/ts-package/*.md",
+          {
+            "input": "./packages/ts-package/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/ts-package/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/ts-package",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/ts-package",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/ts-package/**/*.ts",
+          "packages/ts-package/package.json",
+          "packages/ts-package/generators.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest"
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version"
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy"
+    }
+  },
+  "tags": ["nx-plugin"]
+}

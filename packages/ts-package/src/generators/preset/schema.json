@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "Preset",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Package name.",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use for the library?",
+      "pattern": "(?:^[a-zA-Z][^:]*)$"
+    },
+    "npmScope": {
+      "type": "string",
+      "description": "NPM scope of the package (foo in @foo/bar)",
+      "pattern": "(?:^$|^[a-zA-Z][^:]*$)",
+      "x-prompt": "What NPM scope would you like to use for the library? (leave empty for unscoped)",
+      "default": ""
+    }
+  },
+  "required": ["name"]
+}
