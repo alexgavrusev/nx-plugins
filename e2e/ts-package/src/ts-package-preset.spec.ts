@@ -49,6 +49,16 @@ describe('ts-package preset', () => {
         );
       });
 
+      it('should add rollup config', async () => {
+        const rollupConfig = 'rollup.config.js';
+
+        expect(projectConfiguration.targets.build.options.rollupConfig).toBe(
+          rollupConfig
+        );
+
+        fileExists(rollupConfig);
+      });
+
       it('should build', async () => {
         const { stderr: buildStderr } = await runNxCommandAsync('build');
 
@@ -126,7 +136,7 @@ const createTestProject = async (args = '') => {
   process.env.HUSKY = '0';
 
   const createWorkspaceOutput = await runCommandAsync(
-    `npx --yes create-nx-workspace@latest proj --preset @gvrs-nx/ts-package --no-nxCloud --no-interactive ${args} --verbose`,
+    `npx --yes create-nx-workspace@latest proj --preset @gvrs-nx/ts-package --presetVersion 0.0.0-e2e --no-nxCloud --no-interactive ${args} --verbose`,
     {
       cwd: dirname(tmpProjPath()),
       env: process.env,

@@ -121,12 +121,22 @@ const generatePublishableLibrary = async (
 
   projectConfiguration.targets!.build!.options!.generateExportsField = true;
 
+  projectConfiguration.targets!.build!.options!.rollupConfig =
+    'rollup.config.js';
+
   updateProjectConfiguration(tree, name, projectConfiguration);
 
   updateJson(tree, 'tsconfig.json', (tsConfig) => {
     tsConfig.compilerOptions.module = 'ES2015';
     return tsConfig;
   });
+
+  generateFiles(
+    tree,
+    joinPathFragments(__dirname, './files'),
+    projectConfiguration.root,
+    options
+  );
 
   addSwcHelpersToAllowedDeps(tree, options);
 
