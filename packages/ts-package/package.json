@@ -8,7 +8,7 @@
     "url": "https://github.com/alexgavrusev/nx-plugins.git",
     "directory": "packages/ts-package"
   },
-  "homepage": "https://github.com/alexgavrusev/nx-plugins/packages/ts-package#readme",
+  "homepage": "https://github.com/alexgavrusev/nx-plugins/tree/main/packages/ts-package#readme",
   "bugs": {
     "url": "https://github.com/alexgavrusev/nx-plugins/issues"
   },
