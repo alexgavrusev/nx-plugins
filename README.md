@@ -6,6 +6,6 @@ A collection of Nx plugins
 
 - [`@gvrs-nx/ts-package`](https://github.com/alexgavrusev/nx-plugins/tree/main/packages/ts-package#readme)
 
-## Licence
+## License
 
 MIT © Aliaksandr Haurusiou.
