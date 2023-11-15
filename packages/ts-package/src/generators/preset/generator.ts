@@ -12,6 +12,8 @@ import {
   addDependenciesToPackageJson,
   updateJson,
   detectPackageManager,
+  generateFiles,
+  joinPathFragments,
 } from '@nx/devkit';
 import { libraryGenerator } from '@nx/js';
 import { tsLibVersion } from '@nx/js/src/utils/versions';
@@ -130,6 +132,17 @@ const generatePublishableLibrary = async (
     tsConfig.compilerOptions.module = 'ES2015';
     return tsConfig;
   });
+
+  updateJson<PackageJson & { sideEffects: boolean | string[] }>(
+    tree,
+    'package.json',
+    (packageJson) => {
+      // mark as side effects free
+      packageJson.sideEffects = false;
+
+      return packageJson;
+    }
+  );
 
   generateFiles(
     tree,
