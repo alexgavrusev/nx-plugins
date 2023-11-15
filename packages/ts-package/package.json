@@ -1,6 +1,6 @@
 {
   "name": "@gvrs-nx/ts-package",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "author": "Alex Gavrusev <alex@gavrusev.dev>",
   "repository": {
