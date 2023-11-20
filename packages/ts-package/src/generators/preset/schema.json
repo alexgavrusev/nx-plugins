@@ -20,6 +20,11 @@
       "pattern": "(?:^$|^[a-zA-Z][^:]*$)",
       "x-prompt": "What NPM scope would you like to use for the library? (leave empty for unscoped)",
       "default": ""
+    },
+    "defaultBase": {
+      "type": "string",
+      "description": "default Git branch name",
+      "default": "main"
     }
   },
   "required": ["name"]
