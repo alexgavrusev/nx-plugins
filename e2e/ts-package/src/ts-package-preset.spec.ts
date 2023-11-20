@@ -13,6 +13,7 @@ import {
   directoryExists,
   runCommandAsync,
   cleanup,
+  readFile,
 } from '@nx/plugin/testing';
 
 describe('ts-package preset', () => {
@@ -89,7 +90,7 @@ describe('ts-package preset', () => {
       });
     });
 
-    describe('lint', () => {
+    describe('eslint', () => {
       it('should be linted with eslint', async () => {
         expect(projectConfiguration.targets.lint).toBeDefined();
         expect(projectConfiguration.targets.lint.executor).toBe(
@@ -97,8 +98,31 @@ describe('ts-package preset', () => {
         );
       });
 
-      it('should have passing lint', async () => {
+      it('should pass lint', async () => {
         await runNxCommandAsync('lint');
+      });
+    });
+
+    describe('commitlint', () => {
+      it('should have commit-msg hook with commitlint', () => {
+        const hookPath = tmpProjPath('.husky/commit-msg');
+
+        fileExists(hookPath);
+
+        expect(readFile(hookPath)).toEqual(
+          expect.stringContaining('commitlint --edit $1')
+        );
+      });
+
+      it('should have .commitlintrc.json with config-conventional', () => {
+        const configPath = tmpProjPath('.commitlintrc.json');
+
+        fileExists(configPath);
+
+        expect(readJson(configPath)).toEqual({
+          extends: ['@commitlint/config-conventional'],
+          rules: {},
+        });
       });
     });
 

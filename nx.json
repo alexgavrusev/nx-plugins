@@ -32,7 +32,7 @@
     },
     "@jscutlery/semver:version": {
       "options": {
-        "preset": "conventional",
+        "preset": "conventionalcommits",
         "commitMessageFormat": "chore({projectName}): release version {version} [skip ci]"
       }
     },

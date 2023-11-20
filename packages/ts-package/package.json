@@ -23,7 +23,7 @@
   "main": "./src/index.js",
   "typings": "./src/index.d.ts",
   "dependencies": {
-    "@jscutlery/semver": "^4.0.0",
+    "@jscutlery/semver": "^4.1.0",
     "@nx/devkit": "^17.0.0",
     "@nx/eslint": "^17.0.0",
     "@nx/js": "^17.0.0",

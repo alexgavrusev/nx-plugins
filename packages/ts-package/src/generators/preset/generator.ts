@@ -202,14 +202,16 @@ const moveSelfToDevDeps = async (tree: Tree) => {
 const addJscutlerySemver = async (tree: Tree, options: NormalizedSchema) => {
   const ownPackageJson = await import('../../../package.json');
 
-  const { name } = options;
+  const { name, defaultBase } = options;
 
   const semverInstallTask = await semverInstallGenerator(tree, {
     syncVersions: false,
     projects: [name],
     enforceConventionalCommits: true,
     commitMessageFormat: 'chore: release version {version} [skip ci]',
-    preset: 'conventional',
+    preset: 'conventionalcommits',
+    skipInstall: false,
+    baseBranch: defaultBase,
   });
 
   updateJson<PackageJson>(tree, 'package.json', (pkg) => {
