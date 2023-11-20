@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.0](https://github.com/alexgavrusev/nx-plugins/compare/ts-package-0.2.0...ts-package-0.3.0) (2023-11-20)
+
+
+### Features
+
+* **ts-package:** support @jscutlery/semver v4.1.0 ([cd7951f](https://github.com/alexgavrusev/nx-plugins/commit/cd7951f610a65d768c28abfc2105061993f096ea))
+
 ## [0.2.0](https://github.com/alexgavrusev/nx-plugins/compare/ts-package-0.1.0...ts-package-0.2.0) (2023-11-15)
 
 
