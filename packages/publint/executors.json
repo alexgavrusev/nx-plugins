@@ -1,0 +1,9 @@
+{
+  "executors": {
+    "publint": {
+      "implementation": "./src/executors/executor",
+      "schema": "./src/executors/schema.json",
+      "description": "lint packaging errors with publint"
+    }
+  }
+}

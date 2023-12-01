@@ -1,0 +1,61 @@
+{
+  "name": "publint",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/publint/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/publint",
+        "main": "packages/publint/src/index.ts",
+        "tsConfig": "packages/publint/tsconfig.lib.json",
+        "assets": [
+          "packages/publint/*.md",
+          {
+            "input": "./packages/publint/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/publint/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/publint",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/publint",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/publint/**/*.ts",
+          "packages/publint/package.json",
+          "packages/publint/executors.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest"
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version"
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy"
+    }
+  },
+  "tags": ["nx-plugin"]
+}
