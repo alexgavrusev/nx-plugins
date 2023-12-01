@@ -72,6 +72,12 @@
     "@jscutlery/semver:install": {
       "preset": "conventional",
       "enforceConventionalCommits": true
+    },
+    "@nx/plugin": {
+      "projectNameAndRootFormat": "as-provided",
+      "compiler": "swc",
+      "publishable": true,
+      "e2eTestRunner": "jest"
     }
   }
 }

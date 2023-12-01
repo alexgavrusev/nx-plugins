@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "version": 2,
+  "title": "Publint executor",
+  "description": "Lint your library build artifacts with publint",
+  "type": "object",
+  "properties": {
+    "buildTarget": {
+      "type": "string",
+      "description": "Target which builds the library."
+    },
+    "buildOutputPath": {
+      "type": "string",
+      "description": "Path where the build artifacts are located. If not provided then it will be inferred from the buildTarget executor options as outputPath",
+      "x-completion-type": "directory"
+    },
+    "level": {
+      "enum": ["suggestion", "warning", "errror"],
+      "description": "The level of messages to log (default: suggestion)",
+      "default": "suggestion"
+    },
+    "strict": {
+      "type": "boolean",
+      "description": "Report warnings as errors",
+      "default": true
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}

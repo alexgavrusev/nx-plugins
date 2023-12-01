@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "resolveJsonModule": true,
     "paths": {
+      "@gvrs-nx/publint": ["packages/publint/src/index.ts"],
       "@gvrs-nx/ts-package": ["packages/ts-package/src/index.ts"]
     }
   },
