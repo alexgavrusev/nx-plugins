@@ -39,5 +39,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Lint, test, build, e2e
-        run: pnpm exec nx run-many -t lint,test,build,e2e --parallel=3
+      - name: Lint, test, build
+        run: pnpm exec nx run-many -t lint,test,build --parallel=3
+
+      - name: e2e
+        run: pnpm exec nx run-many -t e2e --parallel=1
