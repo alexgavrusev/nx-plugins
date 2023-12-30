@@ -84,7 +84,10 @@ describe('ts-package preset', () => {
           tmpProjPath()
         );
 
-        const { stdout } = await runCommandAsync(`${exec} publint ${distPath}`);
+        // TODO: re-enable suggestions when https://github.com/nrwl/nx/issues/20009 is fixed and `package.json` `type` can be added back
+        const { stdout } = await runCommandAsync(
+          `${exec} publint ${distPath} --level warning --strict`
+        );
 
         expect(stdout).toContain('All good!');
       });
@@ -110,7 +113,7 @@ describe('ts-package preset', () => {
         fileExists(hookPath);
 
         expect(readFile(hookPath)).toEqual(
-          expect.stringContaining('commitlint --edit $1')
+          expect.stringContaining('commitlint --edit "$1"')
         );
       });
 
